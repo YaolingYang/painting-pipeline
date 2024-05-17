@@ -4,7 +4,7 @@ Here we describe the pipeline for computing haplotype components (HCs) through [
 ## Step 1: Run PBWTpaint for each chromosome  
 The first step is to run the below command for each chromosome (i from 1 to 22, you may split it into 22 array jobs):  
 
-``pbwt -readVcfGT chr${i}_UKBall.vcf.gz -paintSparse chr${i}_UKBall 100 2 500``
+```pbwt -readVcfGT chr${i}_UKBall.vcf.gz -paintSparse chr${i}_UKBall 100 2 500```
 
 (for other input formats please just follow the pbwt instructions on reading data)  
 
@@ -18,11 +18,11 @@ The next step is to do a "weighted" sum of each entry of the N*N sparse matrix (
 
 Please ensure ``gzstream.C`` and ``gzstream.h`` are in the same directory as ``combine_chunklength.cpp``, and then compile with:
 
-``g++ combine_chunklength.cpp -o combine -lz -lpthread -llapack -lblas -std=c++0x -g -O3``
+```g++ combine_chunklength.cpp -o combine -lz -lpthread -llapack -lblas -std=c++0x -g -O3```
 
 After which you run with
 
-``./combine``
+```./combine```
 
 This may take few hours to run, and afterwards we obtain the output ``full_chunklength_UKBall.txt.gz``. The first two columns are the individual indices (IND1 and IND2), and the third column is the expected chunk length that IND1 is copied from IND2 in centiMorgan. This output file represents the sparse chunk length matrix from all-vs-all painting.
 
