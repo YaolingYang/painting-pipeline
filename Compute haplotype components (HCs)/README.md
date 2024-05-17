@@ -33,24 +33,24 @@ The last step is to do SVD to obtain HCs. Here we provide an example code in R, 
 
 Note that if ``full_chunklength_UKBall.txt.gz`` has more than 2^31 rows (the limit of R), then we need to remove some weakly associated individual pairs (i.e. removing the rows with the smallest numbers of the last column of ``full_chunklength_UKBall.txt.gz``) and re-weight (each row of the sparse matrix should sum up to be the total genetic distance in centiMorgan, which is 3545.04 in the standard genetic map that we use). 
 
-``
-library(data.table)
-library(Matrix)
-library(sparsesvd)
-nsnp=487409
-number_of_HCs=100
-cat("Begin reading data\n")
-cl <- fread("full_chunklength_UKBall.txt.gz")
-cat("Begin making sparse matrix\n")
-A <- sparseMatrix(cl$V1, cl$V2, x = log10(cl$V3+1), dims=c(nsnp,nsnp))
-cat("Begin svd \n")
-res<-sparsesvd(A,rank=number_of_HCs)
-cat("Begin calculate HCs\n")
-HCs <- res$u %*% diag(sqrt(res$d))
-cat("Begin writing HCs\n")
-colnames(HCs)=paste0(“HC”,1:number_of_HCs)
-fwrite(HCs, "HCs_UKBall.csv", row.names = FALSE, sep = ',')
-``
+```
+library(data.table)  
+library(Matrix)  
+library(sparsesvd)  
+nsnp=487409  
+number_of_HCs=100  
+cat("Begin reading data\n")  
+cl <- fread("full_chunklength_UKBall.txt.gz")  
+cat("Begin making sparse matrix\n")  
+A <- sparseMatrix(cl$V1, cl$V2, x = log10(cl$V3+1), dims=c(nsnp,nsnp))  
+cat("Begin svd \n")  
+res<-sparsesvd(A,rank=number_of_HCs)  
+cat("Begin calculate HCs\n")  
+HCs <- res$u %*% diag(sqrt(res$d))  
+cat("Begin writing HCs\n")  
+colnames(HCs)=paste0(“HC”,1:number_of_HCs)  
+fwrite(HCs, "HCs_UKBall.csv", row.names = FALSE, sep = ',')  
+```
 
 Now we get the top 100 HCs in file ``HCs_UKBall.csv``. The individual orders are the same as the original vcf.gz file.
 
