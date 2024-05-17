@@ -91,7 +91,7 @@ Then we create a folder ‘chr1split’ to store the subfiles.
 
 Now we run below commands in **Python** to split target files into 500 subfiles, each subfile contains 1000 individuals. Note that this is an example code, more efficient codes for splitting files are possible.
 
-``
+```
 import os
 chr = '1'
 input_file = f"chr{chr}_target.phase"
@@ -131,7 +131,7 @@ def split_file(input_file, total_files, lines_per_file, chr):
         output_file.close()
 
 split_file(input_file, total_files, lines_per_file, chr)
-``
+```
 
 To save storage space, we could compress the reference file, and remove ``chr1_target.phase`` which has already been split into subfiles.
 
