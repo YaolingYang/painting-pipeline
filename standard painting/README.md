@@ -17,7 +17,7 @@ Here we describe the pipeline for painting a bio-bank scale target dataset using
 To paint huge target samples, it is suggested to split the huge target file into small target subfiles, then we can submit multiple small jobs to run efficiently with HPC. It is usually more efficient to split phase files than vcf files, so we first convert vcf to phase files. All the commands below, unless specifically stated, are run on **Linux bash shell**.
 
 ``
-pbwt -readVcfGT chr1_ref.vcf.gz -writePhase chr1_ref.phase
+pbwt -readVcfGT chr1_ref.vcf.gz -writePhase chr1_ref.phase  
 pbwt -readVcfGT chr1_target.vcf.gz -writePhase chr1_target.phase
 ``
 
@@ -72,7 +72,7 @@ split_file(input_file, total_files, lines_per_file, chr)
 To save storage space, we could compress the reference file, and remove ``chr1_target.phase`` which has already been split into subfiles.
 
 ``
-gzip chr1_ref.phase
+gzip chr1_ref.phase  
 rm chr1_target.phase
 ``
 
@@ -112,7 +112,7 @@ Now we have finished data preprocessing. ``chr1_target.vcf.gz`` has been split i
 Before we paint all the target individuals, we need to determine the recombination scaling constant lambda, and use the fixed lambda to paint all the individuals. To estimate lambda, we only need to paint one target subset:
 
 ``
-mkdir chr1
+mkdir chr1  
  ./SparsePainter -reffile chr1_ref.phase.gz -targetfile chr1split/chr1_target1.phase -popfile popnames.txt -mapfile chr1_map.txt -namefile namefile/target1.txt -indfrac 1 -prob -chunklength -chunkcount -probstore linear -out chr1/chr1_target1
 ``
 
