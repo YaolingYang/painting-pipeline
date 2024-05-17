@@ -62,7 +62,7 @@ Now we get the top 100 HCs in file ``HCs_UKBall.csv``. The individual orders are
 
 Please also be aware that there should exist more efficient ways to do Step 2 and 3.
 
-# Pipeline to paint a target dataset with a reference panel
+# Pipeline to paint a target dataset with a reference panel with reference correction
 
 Here we describe the pipeline for painting a bio-bank scale target dataset using a reference dataset on a single chromosome through [SparsePainter](https://github.com/YaolingYang/SparsePainter). Below are the files we have before painting:  
 
@@ -188,7 +188,7 @@ Then we do ref-vs-ref painting (without leave-one-out) to generate the weight fi
 This command generates ``chr1_ref_weight.txt.gz``, which is the weight file, and ``chr1_ref_fixedlambda.txt``, which is the estimated recombination scaling constant. If you paint multiple chromosomes, and assume the estimated recombination scaling constant is 100, please add command ``-fixlambda 100`` in the above command when generating the weight file for the other chromosomes.
 
 
-Step3: Perform the corrected painting for all the target individuals
+## Step3: Perform the corrected painting for all the target individuals
 
 Before we paint all the target individuals, we need to determine the recombination scaling constant lambda, and use the fixed lambda to paint all the individuals. To estimate lambda, we only need to paint one target subset:
 
