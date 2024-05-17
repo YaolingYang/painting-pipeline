@@ -18,6 +18,7 @@ To paint huge target samples, it is suggested to split the huge target file into
 
 ``
 pbwt -readVcfGT chr1_ref.vcf.gz -writePhase chr1_ref.phase  
+
 pbwt -readVcfGT chr1_target.vcf.gz -writePhase chr1_target.phase
 ``
 
