@@ -16,11 +16,10 @@ Here we describe the pipeline for painting a bio-bank scale target dataset using
 
 To paint huge target samples, it is suggested to split the huge target file into small target subfiles, then we can submit multiple small jobs to run efficiently with HPC. It is usually more efficient to split phase files than vcf files, so we first convert vcf to phase files. All the commands below, unless specifically stated, are run on **Linux bash shell**.
 
-``
+```
 pbwt -readVcfGT chr1_ref.vcf.gz -writePhase chr1_ref.phase  
-
 pbwt -readVcfGT chr1_target.vcf.gz -writePhase chr1_target.phase
-``
+```
 
 Then we create a folder ‘chr1split’ to store the subfiles.
 
@@ -72,10 +71,10 @@ split_file(input_file, total_files, lines_per_file, chr)
 
 To save storage space, we could compress the reference file, and remove ``chr1_target.phase`` which has already been split into subfiles.
 
-``
+```
 gzip chr1_ref.phase  
 rm chr1_target.phase
-``
+```
 
 Also, we should update the name files for the individuals in each subfile. These files are stored in the folder ``namefile``.  
 
