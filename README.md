@@ -93,7 +93,7 @@ Now we run below commands in **Python** to split target files into 500 subfiles,
 
 ``
 import os
-chr = '1' 
+chr = '1'
 input_file = f"chr{chr}_target.phase"
 total_files = 500
 lines_per_file = 2000
@@ -140,7 +140,7 @@ gzip chr1_ref.phase
 rm chr1_target.phase
 ``
 
-Also, we should update the name files for the individuals in each subfile. These files are stored in the folder ``namefile``.
+Also, we should update the name files for the individuals in each subfile. These files are stored in the folder ``namefile``.  
 
 ``
 input_file="names.txt"
