@@ -142,7 +142,7 @@ rm chr1_target.phase
 
 Also, we should update the name files for the individuals in each subfile. These files are stored in the folder ``namefile``.  
 
-``
+```
 input_file="names.txt"
 output_dir="namefile"
 mkdir -p "$output_dir"
@@ -167,7 +167,7 @@ while IFS= read -r line; do
         echo $file_count
     fi
 done < "$input_file"
-``
+```
 
 Now we have finished data preprocessing. ``chr1_target.vcf.gz`` has been split into 1000 subfiles in phase format in folder ``chr1split``; ``names.txt`` has been split into 1000 subfiles in folder ``namefile``. ``chr1_ref.vcf.gz`` has been converted to ``chr1_ref.phase.gz``. Then the painting starts.
 
@@ -215,7 +215,7 @@ Now we finish the painting, and get the below output files for each target subfi
 
 Please follow the [instructions](https://github.com/YaolingYang/SparsePainter) to merge these subfiles, extract paintings for analysis, etc. Below we provide an example in Python to merge the probability (``chr1_target_prob.txt.gz``), chunk length (``chr1_target_chunklength.txt.gz``) and chunk count (``chr1_target_chunkcount.txt.gz``) files.
 
-``
+```
 import gzip
 import os
 import sys
@@ -264,4 +264,4 @@ merge_chunkfiles('chunklength', f"chr{chr}_target_chunklength.txt.gz")
 
 #Merge 'chunkcount' files
 merge_chunkfiles('chunkcount', f"chr{chr}_target_chunkcount.txt.gz")
-``
+```
