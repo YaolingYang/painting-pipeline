@@ -23,7 +23,7 @@ pbwt -readVcfGT chr1_target.vcf.gz -writePhase chr1_target.phase
 
 Then we create a folder ‘chr1split’ to store the subfiles.
 
-``mkdir chr1split``
+```mkdir chr1split```
 
 Now we run below commands in **Python** to split target files into 500 subfiles, each subfile contains 1000 individuals. Note that this is an example code, more efficient codes for splitting files are possible.
 
@@ -111,16 +111,16 @@ Now we have finished data preprocessing. ``chr1_target.vcf.gz`` has been split i
 
 Before we paint all the target individuals, we need to determine the recombination scaling constant lambda, and use the fixed lambda to paint all the individuals. To estimate lambda, we only need to paint one target subset:
 
-``
+```
 mkdir chr1  
  ./SparsePainter -reffile chr1_ref.phase.gz -targetfile chr1split/chr1_target1.phase -popfile popnames.txt -mapfile chr1_map.txt -namefile namefile/target1.txt -indfrac 1 -prob -chunklength -chunkcount -probstore linear -out chr1/chr1_target1
-``
+```
 
 This generates ``chr1/chr1_target1_fixlambda.txt`` and other files (described below). Assume the estimated recombination scaling constant is 100 from ``chr1/chr1_target1_fixlambda.txt``, then we use this fixed lambda to paint all the other subfiles (and other chromosomes if it applies). We usually submit the remaining 499 array jobs on HPC. Let ``SLURM_ARRAY_TASK_ID`` denote the array task IDs, then we run the below command to paint all the subfiles:
 
-``
+```
  ./SparsePainter -reffile chr1_ref.phase.gz -targetfile chr1split/chr1_target${SLURM_ARRAY_TASK_ID}.phase -popfile popnames.txt -mapfile chr1_map.txt -namefile namefile/target${SLURM_ARRAY_TASK_ID}.txt -fixlambda 100 -prob -chunklength -chunkcount -probstore linear -out chr1/chr1_target${SLURM_ARRAY_TASK_ID}
-``
+```
 
 It is optional to paint with ``-LDAS -AAS -aveSNP -aveind``, etc.
 
