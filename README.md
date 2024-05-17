@@ -213,7 +213,7 @@ Now we finish the painting, and get the below output files for each target subfi
 
 ## Step4: Post-processing output files
 
-Please follow the [instructions](https://github.com/YaolingYang/SparsePainter) to merge these subfiles, extract paintings for analysis, etc. Below we provide an example in Python to merge the probability (``chr1_target_prob.txt.gz``), chunk length (``chr1_target_chunklength.txt.gz``) and chunk count (``chr1_target_chunkcount.txt.gz``) files.
+Please follow the [instructions](https://github.com/YaolingYang/SparsePainter) to merge these subfiles, extract paintings for analysis, etc. Below we provide an example in **Python** to merge the probability (``chr1_target_prob.txt.gz``), chunk length (``chr1_target_chunklength.txt.gz``) and chunk count (``chr1_target_chunkcount.txt.gz``) files.
 
 ```
 import gzip
