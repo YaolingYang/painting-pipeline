@@ -93,7 +93,6 @@ Now we run below commands in **Python** to split target files into 500 subfiles,
 
 ``
 import os
-
 chr = '1' 
 input_file = f"chr{chr}_target.phase"
 total_files = 500
