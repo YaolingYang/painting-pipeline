@@ -1,6 +1,6 @@
 # Pipeline to paint a target dataset with a reference panel with reference correction
 
-Here we describe the pipeline for painting a bio-bank scale target dataset using a reference dataset on a single chromosome through [SparsePainter](https://github.com/YaolingYang/SparsePainter). Below are the files we have before painting:  
+Here we describe the pipeline for painting a bio-bank scale target dataset using a reference dataset on a single chromosome through ``SparsePainter_reference_corrected.cpp``, please first compile it as described in [SparsePainter repository](https://github.com/YaolingYang/SparsePainter). Below are the files we have before painting:  
 
 -   ``chr1_ref.vcf.gz``: The phased, non-missing reference dataset.
 
